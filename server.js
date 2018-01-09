@@ -107,6 +107,35 @@ app.get('/fruits/:id', (req, res) => {
   // res.send(responseString)
 })
 
+//show edit page for a particular fruit
+app.get('/fruits/:index/edit', (req, res) => {
+  res.render('edit.ejs', {
+    fruit: fruits[req.params.index],
+    index: req.params.index
+  })
+})
+
+// this is the route that our form in edit.ejs is sending info to
+// use override to enable this route to be hit
+app.put('/fruits/:index', (req, res) => {
+
+  console.log("hey update route was hit;")
+
+  // remember--we have to programmatically set this
+  let edible = false;
+  if(req.params.readyToEat == 'on') {
+    edible = true;
+  }
+  // replace the fruit in our array with the updated fruit
+  fruits[req.params.index] = {
+    name: req.body.name,
+    color: req.body.color,
+    readyToEat: edible
+  }
+  // res.send('you hit the update route')
+  res.redirect('/fruits');
+})
+
 // this will remove a fruit with a certain id
 app.delete('/fruits/:index', (req, res) => {
 

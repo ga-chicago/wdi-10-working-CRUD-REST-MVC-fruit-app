@@ -18,6 +18,7 @@
 				<% } else { %>
 					(<font color="red">NOT</font> edible 😪😳🤒💩😪)
 				<% } %>
+				<a href="/fruits/<%= i %>/edit">(edit)</a>
 				<!-- hack a delete request from browser using method-override npm module -->
 				<form action="/fruits/<%= i %>/?_method=DELETE" method="POST">
 					<button type="submit">Delete</button>
