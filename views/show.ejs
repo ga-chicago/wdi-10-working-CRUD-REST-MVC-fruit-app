@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><%= fruit.name %> page!</title>
+</head>
+<body>
+
+	<a href="/fruits"> &lt; back to all fruits </a>
+
+	<h1><%=fruit.name %> page</h1>
+
+	<!-- note the new tags! -->
+	The <%=fruit.name; %> is <%=fruit.color; %>.
+
+	<% if(fruit.readyToEat == true) { %>
+		It is ready to eat!
+	<% } else { %>
+		It is <font color="red">ABSOLUTELY NOT</font> ready to eat.
+	<% } %>
+
+
+</body>
+</html>

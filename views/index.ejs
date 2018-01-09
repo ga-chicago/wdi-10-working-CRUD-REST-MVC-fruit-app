@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Welcome to fruit app</title>
+</head>
+<body>
+	<h1>Here are some fruits</h1>
+	
+	<ul class="fruits">
+		<% for(let i = 0; i < fruits.length; i++) { %>
+			<li> 
+				<a href="/fruits/<%= i %>"><%=fruits[i].name%></a>
+				(<%= fruits[i].color %>)
+				<% if(fruits[i].readyToEat) { %>
+					(Edible! 🍉🍐🍏🍌🍑🍅🍍)
+				<% } else { %>
+					(<font color="red">NOT</font> edible 😪😳🤒💩😪)
+				<% } %>
+			</li>
+		<% } %>
+	</ul>
+
+	<a href="/fruits/new">ADD A FRUIT</a>
+
+</body>
+</html>
