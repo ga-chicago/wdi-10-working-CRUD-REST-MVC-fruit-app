@@ -110,9 +110,13 @@ app.get('/fruits/:id', (req, res) => {
 // this will remove a fruit with a certain id
 app.delete('/fruits/:index', (req, res) => {
 
-  console.log("delete route was hit")
+  // get the index from param string
+  const idx = req.params.index;
 
-  res.send("u tried to delete")
+  // remove 1 element at index  from our array
+  fruits.splice(idx, 1)
+
+  res.redirect('/fruits');
 
 })
 

@@ -18,7 +18,7 @@
 				<% } else { %>
 					(<font color="red">NOT</font> edible 😪😳🤒💩😪)
 				<% } %>
-				<!-- as is, this button is not hitting the delete route.  why?  because HTML doesn't let browsers send DELETE/PATCH/PUT requests. we will install node module method-override -->
+				<!-- hack a delete request from browser using method-override npm module -->
 				<form action="/fruits/<%= i %>/?_method=DELETE" method="POST">
 					<button type="submit">Delete</button>
 				</form>	
