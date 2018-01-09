@@ -1,10 +1,13 @@
 const express = require('express');
 const app = express();
-
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override');
 
 // we must now require our fruit model file since we moved it to another file
 const fruits = require('./models/fruits.js');
+
+// per the instructions at npmjs.org -- this will intercept our post request and tell the rest of this file that it's a delete request
+app.use(methodOverride('_method'))
 
 // here is where our (body parser) middleware goes
 // specify that you are using middleware with app.use();
@@ -20,6 +23,7 @@ app.use((req, res, next) => {
   next(); // tells express to go ahead and do what it was about to do anyway
 });
 
+// this is what lets us include static files (like css/images)
 app.use(express.static('public'));
 
 // home route (route handler)
@@ -103,6 +107,14 @@ app.get('/fruits/:id', (req, res) => {
   // res.send(responseString)
 })
 
+// this will remove a fruit with a certain id
+app.delete('/fruits/:index', (req, res) => {
+
+  console.log("delete route was hit")
+
+  res.send("u tried to delete")
+
+})
 
 // put this in before you start writing routes
 app.listen(3000, () => {
