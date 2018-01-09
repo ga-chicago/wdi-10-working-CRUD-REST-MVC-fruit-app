@@ -6,7 +6,6 @@ const bodyParser = require('body-parser')
 // we must now require our fruit model file since we moved it to another file
 const fruits = require('./models/fruits.js');
 
-
 // here is where our (body parser) middleware goes
 // specify that you are using middleware with app.use();
 // app.use() is for middleware
@@ -16,10 +15,12 @@ app.use(bodyParser.urlencoded({
 }));
 
 // we are going to write our own middleware for fun-- IT IS LIKE A WEIGH STATION ON THE INTERNET all trucks (requests) must pass through it
-app.use((req, res, next)=>{
+app.use((req, res, next) => {
   console.log("I AM SOME SWEET CUSTOM MIDDLEWARE RIGHT NOW. I RUN FOR ALL ROUTESS---------------------------------------hey hey hey hey look at me")
   next(); // tells express to go ahead and do what it was about to do anyway
 });
+
+app.use(express.static('public'));
 
 // home route (route handler)
 app.get('/', (req, res) => {
