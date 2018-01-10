@@ -110,8 +110,8 @@ app.get('/fruits/:id', (req, res) => {
 //show edit page for a particular fruit
 app.get('/fruits/:index/edit', (req, res) => {
   res.render('edit.ejs', {
-    fruit: fruits[req.params.index],
-    index: req.params.index
+    fruit: fruits[req.params.index], // the actual object
+    index: req.params.index // this fruit's index in the array
   })
 })
 
