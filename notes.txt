@@ -17,3 +17,12 @@ we app.use()d our fruits contoller
 and we have to change our routes in the controller to take out the /fruits part so that the routes aren't /fruits/fruits/...
 
 the server now knows all fruits routes start with '/fruits'
+
+
+added dummy routes-- 404 and hello world 
+
+
+
+now we will set up gulp.
+
+
