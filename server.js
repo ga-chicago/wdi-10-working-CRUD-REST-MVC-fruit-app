@@ -28,7 +28,15 @@ app.use('/fruits/', FruitsController)
 // this dummy route 
 app.get('/', (req, res) => {
   res.send("Hello World--Did you mean to go to <a href='/fruits'>/fruits?</a>");
+  // i could use a redirect here, instead couldn't i?
+
 });
+
+// this will match anything that isn't already matched -- perfect for 404.
+app.get('*', (req, res) => {
+  res.send("404");
+})
+
 
 // put this in before you start writing routes
 app.listen(3000, () => {
