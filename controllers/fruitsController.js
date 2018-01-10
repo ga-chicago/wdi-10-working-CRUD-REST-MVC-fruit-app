@@ -1,34 +1,29 @@
 const express = require('express');
+const router = express.Router();
 
-// home route (route handler)
-app.get('/', (req, res) => {
-  res.send("Hello World");
-});
+// require fruits here  since this is where we actually need it
+const fruits = require('../models/fruits.js');
 
-// fruits route
-app.get('/fruits', (req, res)=>{
+
+// show all the fruits
+router.get('/', (req, res)=>{
   // res.send(fruits); // before you did monday night's HW
 
   res.render('index.ejs', {fruits: fruits}) // after you did monday night's HW
 });
 
 
-
-// route to show user a form to add a fruit
-app.get('/fruits/new', (req, res)=>{
-  // console.log(req);
+// 'new' route to show user a form to add a fruit
+router.get('/new', (req, res)=>{
 
   // send the user a form--we need a view/template
   res.render('new.ejs');
-  // res.send("hit the new fruit route--check the terminal")
 })
 
-// post route to handle submitted new fruit form data from new.ejs (which was probably just rendered by the above GET route--i.e. when the user sends a POST route)
-app.post('/fruits', (req, res) => {
+// 'create' route -- handle data POSTED by form in new.ejs -- adds new fruit to 'database'
+router.post('/', (req, res) => {
 
   // req is object -- represents the HTTP post request sent by the user
-  // console.log(req);
-
   // now we can see just the data we want instead of the entire HTTP POST request object
   console.log(req.body)
 
@@ -53,7 +48,7 @@ app.post('/fruits', (req, res) => {
 })
 
 // "show" route for specific fruit 
-app.get('/fruits/:id', (req, res) => {
+router.get('/:id', (req, res) => {
 
   // we're gonna make this also send an object OOBJECT withour data
   // the second parameter MUST BE AN OBJECT
@@ -68,7 +63,7 @@ app.get('/fruits/:id', (req, res) => {
 })
 
 //show edit page for a particular fruit
-app.get('/fruits/:index/edit', (req, res) => {
+router.get('/:index/edit', (req, res) => {
   res.render('edit.ejs', {
     fruit: fruits[req.params.index], // the actual object
     index: req.params.index // this fruit's index in the array
@@ -77,7 +72,7 @@ app.get('/fruits/:index/edit', (req, res) => {
 
 // this is the route that our form in edit.ejs is sending info to
 // use override to enable this route to be hit
-app.put('/fruits/:index', (req, res) => {
+router.put('/:index', (req, res) => {
 
   console.log("hey update route was hit;")
 
@@ -97,7 +92,7 @@ app.put('/fruits/:index', (req, res) => {
 })
 
 // this will remove a fruit with a certain id
-app.delete('/fruits/:index', (req, res) => {
+router.delete('/:index', (req, res) => {
 
   // get the index from param string
   const idx = req.params.index;
@@ -108,3 +103,7 @@ app.delete('/fruits/:index', (req, res) => {
   res.redirect('/fruits');
 
 })
+
+
+
+module.exports = router;

@@ -4,3 +4,16 @@ what views to send, how data is changing.  controllers are usually matched up wi
 they live in their own file(s) in the 'controllers folder'.
 
 our task now is not writing new stuff, it's re-organizing our code into a different structure.
+
+we moved all the routes to fruitsController.js
+and then required that file in the same spot where it used to be in server.js (below middleware).
+
+we changed 'app' to 'router' after doing that -- to use express's routing functions
+
+also fruits data is no longer needed by server.js, so we're going to bring it in in the controller instead
+
+we app.use()d our fruits contoller 
+
+and we have to change our routes in the controller to take out the /fruits part so that the routes aren't /fruits/fruits/...
+
+the server now knows all fruits routes start with '/fruits'
