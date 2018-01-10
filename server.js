@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
 
 // we are going to write our own middleware for fun-- IT IS LIKE A WEIGH STATION ON THE INTERNET all trucks (requests) must pass through it
 app.use((req, res, next) => {
-  console.log("I AM SOME SWEET CUSTOM MIDDLEWARE RIGHT NOW. I RUN FOR ALL ROUTESS---------------------------------------hey hey hey hey look at me")
+  console.log("--------custom middleware was run--------")
   next(); // tells express to go ahead and do what it was about to do anyway
 });
 

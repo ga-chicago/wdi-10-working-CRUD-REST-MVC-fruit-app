@@ -1,0 +1,6 @@
+controllers: are like brains of an app.
+what views to send, how data is changing.  controllers are usually matched up with models.
+
+they live in their own file(s) in the 'controllers folder'.
+
+our task now is not writing new stuff, it's re-organizing our code into a different structure.
